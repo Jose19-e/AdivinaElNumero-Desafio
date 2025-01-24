@@ -40,7 +40,6 @@ class _VideoJuegoState extends State<VideoJuego> {
   void _iniciarJuego() {
     setState(() {
       _numeroSecreto = Random().nextInt(_rangoMaximo) + 1;
-      _historial.clear();
       _mayorQue.clear();
       _menorQue.clear();
       _mensaje = '';
@@ -129,6 +128,7 @@ class _VideoJuegoState extends State<VideoJuego> {
         _mensaje = '¡Has perdido! El número era $_numeroSecreto';
         estado = 'NoEncontrado';
         _historial.add(numero_escogido);
+        //_iniciarJuego();
       }
     });
     _controller.clear();
@@ -151,6 +151,9 @@ class _VideoJuegoState extends State<VideoJuego> {
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 5,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget> [
@@ -178,6 +181,33 @@ class _VideoJuegoState extends State<VideoJuego> {
               ),
             ],
           ),
+          const SizedBox(height: 10.0,),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text(
+                'Mayor que',
+                style: TextStyle(
+                  color: Colors.black
+                ),
+              ),
+              SizedBox(height: 5.0,),
+              Text(
+                'Menor que',
+                style: TextStyle(
+                  color: Colors.black
+                ),
+              ),
+               SizedBox(height: 5.0,),
+              Text(
+                'Historial',
+                style: TextStyle(
+                  color: Colors.black
+                ),
+              )
+            ],
+          ),
+          SizedBox(height: 10.0,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -186,7 +216,6 @@ class _VideoJuegoState extends State<VideoJuego> {
               buildCard("HISTORIAL", _historial, estado: estado == 'encontrado' ? true : false)
             ],
           ),
-          SizedBox(height: 30.0,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

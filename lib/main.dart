@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 77, 113, 234)),
         useMaterial3: true,
       ),
+      debugShowCheckedModeBanner: false,
       home: const VideoJuego(title: 'ADIVINAR NUMERO'),
     );
   }
